@@ -22,6 +22,24 @@ export default function BudgetContainer() {
     return updatedMonthlyTransaction;
   }, [transactionData.transactions]);
 
+  function renderMonthlyBudget() {
+    const monthlyBudgets = [];
+
+    // Corrected loop condition: change `i <= 0` to `i >= 0`
+    for (let i = allMonthlyTransaction.length - 1; i >= 0; i--) {
+      monthlyBudgets.push(
+        <MonthlyBudget
+          key={i}
+          transactions={allMonthlyTransaction[i]}
+          monthIndex={i}
+          year={transactionData.currentYear}
+        />
+      );
+    }
+
+    return monthlyBudgets;
+  }
+
   if (!transactionData.transactions)
     return (
       <p className="text-white text-center mt-24 mb-12">
@@ -31,14 +49,7 @@ export default function BudgetContainer() {
 
   return (
     <div className="text-sm">
-      {allMonthlyTransaction.map((monthlyTransaction, index) => (
-        <MonthlyBudget
-          key={index}
-          transactions={monthlyTransaction}
-          monthIndex={index}
-          year={transactionData.currentYear}
-        />
-      ))}
+      {renderMonthlyBudget()}
       <br />
       <YearlyChart transactions={transactionData.transactions} />
     </div>

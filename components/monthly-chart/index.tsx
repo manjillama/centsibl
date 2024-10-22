@@ -23,19 +23,30 @@ export default function MonthlyChart({
           width: 0,
         },
         labels,
-        // responsive: [
-        //   {
-        //     breakpoint: 480,
-        //     options: {
-        //       chart: {
-        //         width: 200,
-        //       },
-        //       legend: {
-        //         position: "bottom",
-        //       },
-        //     },
-        //   },
-        // ],
+        responsive: [
+          {
+            breakpoint: 1024,
+            options: {
+              chart: {
+                width: 500,
+              },
+              legend: {
+                position: "bottom",
+              },
+            },
+          },
+          {
+            breakpoint: 560,
+            options: {
+              chart: {
+                width: 350,
+              },
+              legend: {
+                position: "bottom",
+              },
+            },
+          },
+        ],
       }}
       series={series}
       type="donut"

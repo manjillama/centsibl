@@ -34,7 +34,7 @@ export default function MonthlyBudget({
         {transformIndexToMonth(monthIndex)} {year}
       </h3>
       <div className="flex flex-wrap">
-        <div className="lg:w-3/5">
+        <div className="lg:w-3/5 w-full">
           {transactions
             .sort(
               (a, b) =>

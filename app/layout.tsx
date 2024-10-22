@@ -22,7 +22,7 @@ export default async function RootLayout({
           <AuthProvider session={session}>
             <Navbar />
             <div className="py-16 max-w-screen-xl	mx-auto">{children}</div>
-            <footer className="py-16 text-neutral-600 text-center border-t-[1px] border-neutral-700">
+            <footer className="py-8 text-neutral-600 text-center border-t-[1px] border-neutral-700">
               centsible. &copy; The budget app that you always wanted.
             </footer>
           </AuthProvider>

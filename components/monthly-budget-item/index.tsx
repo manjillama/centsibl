@@ -8,8 +8,9 @@ export default function MonthlyBudgetItem({
   transaction: ITransaction;
 }) {
   return (
-    <div className="flex hover:bg-neutral-700 -mx-2 rounded-md">
-      <input value={transaction.title} className="grow" />
+    <div className="flex flex-wrap hover:bg-neutral-700 -mx-2 rounded-md">
+      <input value={transaction.title} className="grow md:w-auto w-full" />
+      <input value={transaction.amount} className="w-20" />
       <select
         name="category"
         defaultValue={transaction.category}
@@ -21,7 +22,6 @@ export default function MonthlyBudgetItem({
           </option>
         ))}
       </select>
-      <input value={transaction.amount} className="w-20" />
       <div className="relative w-28 input">
         <label className="date-picker-label text-white">
           {formatDate(new Date(transaction.transactionDate))}
