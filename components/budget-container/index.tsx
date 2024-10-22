@@ -1,7 +1,7 @@
 "use client";
 import { useTransaction } from "@/context/transaction-provider";
 import ITransaction from "@/interfaces/ITransaction";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import MonthlyBudget from "../monthly-budget";
 import YearlyChart from "../yearly-chart";
 
@@ -25,7 +25,7 @@ export default function BudgetContainer() {
   if (!transactionData.transactions)
     return (
       <p className="text-white text-center mt-24 mb-12">
-        Please wait while we're warming up your budget...
+        Please wait while we&apos;re warming up your budget...
       </p>
     );
 

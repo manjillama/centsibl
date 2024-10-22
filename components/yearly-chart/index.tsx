@@ -106,11 +106,13 @@ export default function YearlyChart({
   }, [transactions]);
 
   return (
-    <ApexChart
-      options={yearlyData.options}
-      series={yearlyData.series}
-      type="area"
-      height={350}
-    />
+    <div className="text-black">
+      <ApexChart
+        options={yearlyData.options}
+        series={yearlyData.series}
+        type="area"
+        height={350}
+      />
+    </div>
   );
 }

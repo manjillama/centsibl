@@ -15,7 +15,7 @@ const SignoutButton = () => {
       className="px-4 py-2 block text-white text-sm"
       onClick={handleSignout}
     >
-      Logout 🚶✌️
+      Logout ✌️
     </button>
   );
 };

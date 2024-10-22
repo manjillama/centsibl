@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import SignInForm from "./signin-form";
-import OAuthProviders from "./oauth-providers";
+import OAuthProviders from "../signin/oauth-providers";
 import { ClientSafeProvider, LiteralUnion } from "next-auth/react";
 import { BuiltInProviderType } from "next-auth/providers/index";
+import SignUpForm from "./signup-form";
 
 type Props = {
   providers: Record<
@@ -11,13 +11,13 @@ type Props = {
     ClientSafeProvider
   > | null;
 };
-export default function SignInWrapper({ providers }: Props) {
+export default function SignUpWrapper({ providers }: Props) {
   const [showSignInUsingCredentials, setShowSignInUsingCredentials] =
     useState(false);
 
   return (
     <div className="container max-w-xs mx-auto mt-[10%]">
-      <h1 className="text-3xl font-bold text-white">Log in</h1>
+      <h1 className="text-3xl font-bold text-white">Sign up</h1>
       {!showSignInUsingCredentials ? (
         <>
           <OAuthProviders providers={providers} />
@@ -31,12 +31,12 @@ export default function SignInWrapper({ providers }: Props) {
         </>
       ) : (
         <>
-          <SignInForm />
+          <SignUpForm />
           <button
             onClick={() => setShowSignInUsingCredentials(false)}
             className="w-full text-sky-600 hover:underline"
           >
-            Other login options
+            Other signup options
           </button>
         </>
       )}

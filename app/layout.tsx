@@ -17,15 +17,13 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} bg-neutral-900 max-w-screen-xl	mx-auto`}
-      >
+      <body className={`${inter.className} bg-neutral-900  text-white`}>
         <TransactionProvider>
           <AuthProvider session={session}>
             <Navbar />
-            {children}
+            <div className="py-16 max-w-screen-xl	mx-auto">{children}</div>
             <footer className="py-16 text-neutral-600 text-center border-t-[1px] border-neutral-700">
-              Centsible &copy; The budget app that you always wanted.
+              centsible. &copy; The budget app that you always wanted.
             </footer>
           </AuthProvider>
         </TransactionProvider>

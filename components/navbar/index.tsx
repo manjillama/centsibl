@@ -14,7 +14,7 @@ export default function Navbar() {
     <nav className="container mx-auto px-[15px]">
       <div className="flex justify-between items-center">
         <h1 className="font-bold text-xl">
-          <Link href="/"></Link>
+          <Link href="/">centsible.</Link>
         </h1>
         <ul className="flex space-x-2 items-center -mr-[1rem]">
           {session ? (
