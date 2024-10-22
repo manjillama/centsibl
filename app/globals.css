@@ -7,3 +7,30 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
+input,
+select,
+.input {
+  @apply bg-transparent text-white border-0 outline-none;
+  margin: 0px !important;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+}
+/* input {
+  @apply focus:border-b-2 focus:border-sky-600;
+} */
+input.picker[type="date"] {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+input.picker[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  color: transparent;
+  background: transparent;
+}

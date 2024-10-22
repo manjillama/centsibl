@@ -11,8 +11,11 @@ const SignoutButton = () => {
   };
 
   return (
-    <button className="px-4 py-2 block" onClick={handleSignout}>
-      Sign out
+    <button
+      className="px-4 py-2 block text-white text-sm"
+      onClick={handleSignout}
+    >
+      Logout 🚶✌️
     </button>
   );
 };

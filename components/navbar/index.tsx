@@ -8,13 +8,13 @@ import Image from "next/image";
 export default function Navbar() {
   const pathname = usePathname();
   const { data: session } = useSession();
-  console.log("From Navbar: (Client session)", session);
+  // console.log("From Navbar: (Client session)", session);
 
   return (
     <nav className="container mx-auto px-[15px]">
       <div className="flex justify-between items-center">
         <h1 className="font-bold text-xl">
-          <Link href="/">NextAuth</Link>
+          <Link href="/"></Link>
         </h1>
         <ul className="flex space-x-2 items-center -mr-[1rem]">
           {session ? (
