@@ -44,6 +44,7 @@ export default function YearlyChart({
         },
         stroke: {
           width: 2,
+          curve: "straight",
         },
         dataLabels: {
           style: {

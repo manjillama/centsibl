@@ -22,7 +22,12 @@ export default function BudgetContainer() {
     return updatedMonthlyTransaction;
   }, [transactionData.transactions]);
 
-  if (!transactionData.transactions) return <p>Loading...</p>;
+  if (!transactionData.transactions)
+    return (
+      <p className="text-white text-center mt-24 mb-12">
+        Please wait while we're warming up your budget...
+      </p>
+    );
 
   return (
     <div className="text-sm">
