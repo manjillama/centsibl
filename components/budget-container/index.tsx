@@ -31,6 +31,7 @@ export default function BudgetContainer() {
         <MonthlyBudget
           key={i}
           transactions={allMonthlyTransaction[i]}
+          currency={transactionData.currency}
           monthIndex={i}
           year={transactionData.currentYear}
         />
@@ -51,7 +52,10 @@ export default function BudgetContainer() {
     <div className="text-sm">
       {renderMonthlyBudget()}
       <br />
-      <YearlyChart transactions={transactionData.transactions} />
+      <YearlyChart
+        transactions={transactionData.transactions}
+        currency={transactionData.currency}
+      />
     </div>
   );
 }

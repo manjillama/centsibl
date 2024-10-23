@@ -1,15 +1,18 @@
 import ITransaction from "@/interfaces/ITransaction";
-import { transformIndexToMonth } from "@/utils";
+import { formatCurrency, transformIndexToMonth } from "@/utils";
 import MonthlyBudgetItem from "../monthly-budget-item";
 import MonthlyChart from "../monthly-chart";
 import { useMemo } from "react";
+import { CategoryType } from "@/types";
 
 export default function MonthlyBudget({
   transactions,
+  currency,
   monthIndex,
   year,
 }: {
   transactions: ITransaction[];
+  currency: string;
   monthIndex: number;
   year: number;
 }) {
@@ -28,13 +31,37 @@ export default function MonthlyBudget({
 
   if (transactions.length <= 0) return null;
 
+  function getTotalExpense() {
+    return transactions.reduce((a, b) => {
+      return b.category !== CategoryType.Income ? a + b.amount : 0;
+    }, 0);
+  }
+  function getTotalIncome() {
+    return transactions.reduce((a, b) => {
+      return b.category === CategoryType.Income ? a + b.amount : 0;
+    }, 0);
+  }
+
   return (
-    <div className="my-4 py-4 border-b-[1px] border-neutral-700 pb-6">
-      <h3 className="text-white font-semibold">
-        {transformIndexToMonth(monthIndex)} {year}
-      </h3>
+    <div className="my-4 py-4 pb-6">
+      <div className="mb-2">
+        <h3 className="text-white font-semibold">
+          {transformIndexToMonth(monthIndex)} {year}
+        </h3>
+        <p className="text-neutral-500">
+          <span>
+            Expense: {formatCurrency(currency)}
+            {getTotalExpense()}
+          </span>
+          &nbsp;&nbsp;&nbsp;
+          <span>
+            Income: {formatCurrency(currency)}
+            {getTotalIncome()}
+          </span>
+        </p>
+      </div>
       <div className="flex flex-wrap">
-        <div className="lg:w-3/5 w-full">
+        <div className="lg:w-3/5 w-full lg:mb-0 mb-4">
           {transactions
             .sort(
               (a, b) =>
@@ -42,7 +69,11 @@ export default function MonthlyBudget({
                 (new Date(b.transactionDate) as any)
             )
             .map((transaction, i) => (
-              <MonthlyBudgetItem transaction={transaction} key={i} />
+              <MonthlyBudgetItem
+                transaction={transaction}
+                currency={currency}
+                key={i}
+              />
             ))}
         </div>
         <div className="lg:w-2/5">

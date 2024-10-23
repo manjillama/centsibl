@@ -11,7 +11,7 @@ export default function Navbar() {
   // console.log("From Navbar: (Client session)", session);
 
   return (
-    <nav className="container mx-auto px-[15px]">
+    <nav className="container py-3 mx-auto px-[15px]">
       <div className="flex justify-between items-center">
         <h1 className="font-bold text-xl">
           <Link href="/">centsible.</Link>
@@ -25,14 +25,20 @@ export default function Navbar() {
             <>
               {pathname !== "/signin" ? (
                 <li>
-                  <Link className="px-4 py-2 block" href="/signin">
+                  <Link
+                    className="py-2 px-4 block bg-white text-black rounded-lg hover:bg-neutral-200"
+                    href="/signin"
+                  >
                     Log In
                   </Link>
                 </li>
               ) : null}
               {pathname !== "/signup" ? (
                 <li>
-                  <Link className="p-2 block" href="/signup">
+                  <Link
+                    className="py-2 px-4 block bg-black text-white rounded-lg hover:opacity-75 border border-black"
+                    href="/signup"
+                  >
                     Sign Up
                   </Link>
                 </li>

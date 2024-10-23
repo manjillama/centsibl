@@ -6,12 +6,14 @@ import ITransaction from "@/interfaces/ITransaction";
 const INITIAL_DATA: {
   transactionData: {
     currentYear: number;
+    currency: string;
     transactions: ITransaction[] | null;
   };
   refreshTransactionData: (year: number) => void;
 } = {
   transactionData: {
     currentYear: new Date().getFullYear(),
+    currency: "USD",
     transactions: null,
   },
   refreshTransactionData: (year: number) => {},

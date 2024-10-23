@@ -1,16 +1,16 @@
 "use client";
 import { useTransaction } from "@/context/transaction-provider";
 import ITransaction from "@/interfaces/ITransaction";
-import { transformIndexToMonth } from "@/utils";
-import { useEffect, useMemo, useState } from "react";
+import { formatCurrency, transformIndexToMonth } from "@/utils";
+import { useMemo } from "react";
 import ApexChart, { Props } from "react-apexcharts";
-
-const CURRENCY = "$";
 
 export default function YearlyChart({
   transactions,
+  currency,
 }: {
   transactions: ITransaction[];
+  currency: string;
 }) {
   const yearlyData = useMemo<Props>(() => {
     const updatedMonthlyTotal = new Array(12).fill(0);
@@ -55,7 +55,7 @@ export default function YearlyChart({
             enabled: false,
           },
           formatter(val, opts) {
-            return `${CURRENCY}${val}`;
+            return `${formatCurrency(currency)}${val}`;
           },
         },
         grid: {
@@ -103,7 +103,7 @@ export default function YearlyChart({
         width: 1,
       },
     };
-  }, [transactions]);
+  }, [transactions, currency]);
 
   return (
     <div className="text-black">
