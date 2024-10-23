@@ -36,7 +36,7 @@ export default function MonthlyBudgetItem({
           ))}
         </select>
         <div className="relative w-32 input">
-          <label className="date-picker-label text-white">
+          <label className="date-picker-label text-white ml-[4px]">
             {formatDate(new Date(transaction.transactionDate))}
             <input
               className="picker"
