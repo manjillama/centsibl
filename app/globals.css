@@ -25,6 +25,7 @@ select,
 textarea,
 .date-picker-label {
   font-size: 16px;
+  -webkit-appearance: none;
 }
 input,
 select,

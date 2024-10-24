@@ -4,6 +4,7 @@ import ITransaction from "@/interfaces/ITransaction";
 import { useMemo } from "react";
 import MonthlyBudget from "../monthly-budget";
 import YearlyChart from "../yearly-chart";
+import BUdgetInputForm from "../budget-input-form";
 
 export default function BudgetContainer() {
   const { transactionData } = useTransaction();
@@ -50,6 +51,7 @@ export default function BudgetContainer() {
 
   return (
     <div className="text-sm">
+      <BUdgetInputForm currency={transactionData.currency} />
       {renderMonthlyBudget()}
       <br />
       <YearlyChart

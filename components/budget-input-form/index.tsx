@@ -2,32 +2,36 @@ import ITransaction from "@/interfaces/ITransaction";
 import { CategoryType } from "@/types";
 import { categoryToEmoji, formatCurrency, formatDate } from "@/utils";
 
-export default function MonthlyBudgetItem({
-  transaction,
-  currency,
-}: {
-  transaction: ITransaction;
-  currency: string;
-}) {
+export default function BUdgetInputForm({ currency }: { currency: string }) {
   return (
-    <div className="border-b-[1px] border-neutral-700">
-      <div className="flex flex-wrap hover:bg-neutral-700 rounded-md -mx-2 space-x-2 py-1">
+    <div className="border-b-[1px] border-neutral-700 py-4">
+      <div className="flex flex-wrap rounded-md -mx-2 space-x-2 py-1 lg:w-4/5">
         <div className="ml-2 grow md:w-auto w-full flex items-center">
-          {categoryToEmoji(transaction.category)}
-          <input type="text" value={transaction.title} className="grow" />
+          {categoryToEmoji(CategoryType.Food)}
+          <input
+            type="text"
+            value={""}
+            className="grow"
+            placeholder="Type new budget name..."
+          />
         </div>
         <div>
           <label className="relative ml-2">
             <span className="text-neutral-500 absolute -top-[2px] -left-[6px]">
               {formatCurrency(currency)}
             </span>
-            <input type="text" value={transaction.amount} className="w-20" />
+            <input
+              type="text"
+              value={""}
+              className="w-48"
+              placeholder="Add amount..."
+            />
           </label>
         </div>
         <select
           name="category"
-          defaultValue={transaction.category}
-          className="w-48"
+          defaultValue={CategoryType.Food}
+          className="w-48 h-full"
         >
           {Object.values(CategoryType).map((category) => (
             <option key={category} value={category}>
@@ -37,14 +41,22 @@ export default function MonthlyBudgetItem({
         </select>
         <div className="relative w-32 input">
           <label className="date-picker-label text-white ml-[4px]">
-            {formatDate(new Date(transaction.transactionDate))}
+            {formatDate(new Date())}
             <input
               className="picker"
-              value={`${transaction.transactionDate}`}
+              value={`${new Date()}`}
               type="date"
               onClick={(e) => e.currentTarget.showPicker()}
             />
           </label>
+        </div>
+        <div className="md:w-auto w-full">
+          <button
+            type="button"
+            className="py-2 px-6 block bg-sky-600 text-white rounded-lg hover:opacity-75 text-sm"
+          >
+            Add
+          </button>
         </div>
       </div>
     </div>

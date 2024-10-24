@@ -9,7 +9,7 @@ const SignoutButton = () => {
 
   return (
     <button
-      className="px-4 py-2 block text-white text-sm"
+      className="px-4 py-2 block text-white border-[1px] border-neutral-500 rounded-md text-xs"
       onClick={handleSignout}
     >
       Logout ✌️
