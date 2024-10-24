@@ -16,14 +16,14 @@ export default function MonthlyBudgetItem({
           {categoryToEmoji(transaction.category)}
           <input type="text" value={transaction.title} className="grow" />
         </div>
-        <div>
-          <label className="relative ml-2">
-            <span className="text-neutral-500 absolute -top-[2px] -left-[6px]">
-              {formatCurrency(currency)}
-            </span>
+        <label className="flex items-center">
+          <span className="text-neutral-500 inline-block">
+            {formatCurrency(currency)}
+          </span>
+          <div className="-ml-1">
             <input type="text" value={transaction.amount} className="w-20" />
-          </label>
-        </div>
+          </div>
+        </label>
         <select
           name="category"
           defaultValue={transaction.category}

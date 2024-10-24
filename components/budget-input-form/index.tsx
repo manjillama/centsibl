@@ -40,11 +40,11 @@ export default function BUdgetInputForm({ currency }: { currency: string }) {
             placeholder="Type new budget name..."
           />
         </div>
-        <div>
-          <label className="relative ml-2">
-            <span className="text-neutral-500 absolute -top-[2px] -left-[6px]">
-              {formatCurrency(currency)}
-            </span>
+        <label className="flex items-center">
+          <span className="text-neutral-500 inline-block">
+            {formatCurrency(currency)}
+          </span>
+          <div className="-ml-1">
             <input
               type="text"
               name="amount"
@@ -54,8 +54,8 @@ export default function BUdgetInputForm({ currency }: { currency: string }) {
               autoComplete="off"
               placeholder="Add amount..."
             />
-          </label>
-        </div>
+          </div>
+        </label>
         <div>
           <select
             value={formProps.category}
