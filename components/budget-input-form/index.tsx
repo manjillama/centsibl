@@ -28,17 +28,19 @@ export default function BUdgetInputForm({ currency }: { currency: string }) {
             />
           </label>
         </div>
-        <select
-          name="category"
-          defaultValue={CategoryType.Food}
-          className="w-48 h-full"
-        >
-          {Object.values(CategoryType).map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
+        <div>
+          <select
+            name="category"
+            defaultValue={CategoryType.Food}
+            className="w-48 h-full ml-1"
+          >
+            {Object.values(CategoryType).map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="relative w-32 input">
           <label className="date-picker-label text-white ml-[4px]">
             {formatDate(new Date())}
@@ -50,7 +52,7 @@ export default function BUdgetInputForm({ currency }: { currency: string }) {
             />
           </label>
         </div>
-        <div className="md:w-auto w-full">
+        <div className="md:w-auto md:mt-0 w-full mt-2">
           <button
             type="button"
             className="py-2 px-6 block bg-sky-600 text-white rounded-lg hover:opacity-75 text-sm"
