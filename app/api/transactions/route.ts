@@ -102,6 +102,12 @@ const DATA: ITransaction[] = [
     transactionDate: "2024-09-14",
   },
   {
+    title: "Salary",
+    category: CategoryType.Income,
+    amount: 3885,
+    transactionDate: "2024-09-13",
+  },
+  {
     title: "Takeo",
     category: CategoryType.DebtRepayment,
     amount: 1500,
@@ -174,6 +180,12 @@ const DATA: ITransaction[] = [
     transactionDate: "2024-09-03",
   },
   {
+    title: "Aapa & Aama First Salary (Extra)",
+    category: CategoryType.FamilyAndChildren,
+    amount: 400,
+    transactionDate: "2024-10-25",
+  },
+  {
     title: "Marina Misc ❤️",
     category: CategoryType.Miscellaneous,
     amount: 30,
@@ -195,6 +207,12 @@ const DATA: ITransaction[] = [
     title: "Costco Groceries",
     category: CategoryType.Food,
     amount: 150,
+    transactionDate: "2024-09-30",
+  },
+  {
+    title: "Salary",
+    category: CategoryType.Income,
+    amount: 3885,
     transactionDate: "2024-09-30",
   },
   {
@@ -282,6 +300,12 @@ const DATA: ITransaction[] = [
     transactionDate: "2024-10-14",
   },
   {
+    title: "Salary",
+    category: CategoryType.Income,
+    amount: 3885,
+    transactionDate: "2024-10-15",
+  },
+  {
     title: "Costco Groceries 2",
     category: CategoryType.ClothingAndAccessories,
     amount: 104,
@@ -324,6 +348,12 @@ const DATA: ITransaction[] = [
     transactionDate: "2024-10-21",
   },
   {
+    title: "Salary",
+    category: CategoryType.Income,
+    amount: 3885,
+    transactionDate: "2024-10-31",
+  },
+  {
     title: "Marina's Expense",
     category: CategoryType.FamilyAndChildren,
     amount: 500,
@@ -347,6 +377,7 @@ const DATA: ITransaction[] = [
     amount: 85,
     transactionDate: "2024-11-01",
   },
+
   {
     title: "Takeo",
     category: CategoryType.DebtRepayment,
@@ -358,6 +389,18 @@ const DATA: ITransaction[] = [
     category: CategoryType.BillsAndSubscriptions,
     amount: 22,
     transactionDate: "2024-11-09",
+  },
+  {
+    title: "Salary",
+    category: CategoryType.Income,
+    amount: 3885,
+    transactionDate: "2024-11-15",
+  },
+  {
+    title: "Salary",
+    category: CategoryType.Income,
+    amount: 3885,
+    transactionDate: "2024-11-29",
   },
 ];
 

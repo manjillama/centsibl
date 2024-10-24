@@ -19,12 +19,13 @@ export default function MonthlyBudget({
   const monthlyChartData = useMemo(() => {
     const dataMap = new Map();
     transactions.forEach((transaction) => {
-      dataMap.set(
-        transaction.category,
-        dataMap.get(transaction.category)
-          ? dataMap.get(transaction.category) + transaction.amount
-          : transaction.amount
-      );
+      if (transaction.category !== CategoryType.Income)
+        dataMap.set(
+          transaction.category,
+          dataMap.get(transaction.category)
+            ? dataMap.get(transaction.category) + transaction.amount
+            : transaction.amount
+        );
     });
     return dataMap;
   }, [transactions]);
@@ -33,12 +34,12 @@ export default function MonthlyBudget({
 
   function getTotalExpense() {
     return transactions.reduce((a, b) => {
-      return b.category !== CategoryType.Income ? a + b.amount : 0;
+      return b.category !== CategoryType.Income ? a + b.amount : a;
     }, 0);
   }
   function getTotalIncome() {
     return transactions.reduce((a, b) => {
-      return b.category === CategoryType.Income ? a + b.amount : 0;
+      return b.category === CategoryType.Income ? a + b.amount : a;
     }, 0);
   }
 

@@ -13,14 +13,15 @@ export default function YearlyChart({
   currency: string;
 }) {
   const yearlyData = useMemo<Props>(() => {
-    const updatedMonthlyTotal = new Array(12).fill(0);
+    const monthlyTotalExpense = new Array(12).fill(0);
+    const monthlyTotalIncome = new Array(12).fill(0);
 
     transactions.forEach((transaction) => {
       const currMonth = new Date(transaction.transactionDate).getUTCMonth();
       if (transaction.category === "Income") {
-        // todo
+        monthlyTotalIncome[currMonth] += transaction.amount;
       } else {
-        updatedMonthlyTotal[currMonth] += transaction.amount;
+        monthlyTotalExpense[currMonth] += transaction.amount;
       }
     });
 
@@ -92,11 +93,11 @@ export default function YearlyChart({
       series: [
         {
           name: "Expense",
-          data: updatedMonthlyTotal,
+          data: monthlyTotalExpense,
         },
         {
           name: "Income",
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 7770, 7700, 7700, 0],
+          data: monthlyTotalIncome,
         },
       ],
       stroke: {

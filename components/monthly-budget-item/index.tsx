@@ -27,6 +27,12 @@ export default function MonthlyBudgetItem({
         <select
           name="category"
           defaultValue={transaction.category}
+          style={{
+            color:
+              transaction.category === CategoryType.Income
+                ? "#16a34a"
+                : "white",
+          }}
           className="w-48"
         >
           {Object.values(CategoryType).map((category) => (
