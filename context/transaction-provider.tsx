@@ -10,48 +10,62 @@ const INITIAL_DATA: {
     transactions: ITransaction[] | null;
   };
   refreshTransactionData: (year: number) => void;
+  addTransaction: (transaction: ITransaction) => void;
 } = {
   transactionData: {
     currentYear: new Date().getFullYear(),
     currency: "USD",
     transactions: null,
   },
-  refreshTransactionData: (year: number) => {},
+  refreshTransactionData: () => {},
+  addTransaction: () => {},
 };
 
 const TransactionContext = createContext(INITIAL_DATA);
 
 function TransactionProvider({ children }: { children: React.ReactNode }) {
-  const [transactionData, updateTransactionData] = useState(
+  const [transactionData, setTransactionData] = useState(
     INITIAL_DATA.transactionData
   );
 
   useEffect(() => {
-    (async () => {
-      const response = await api.get<ITransaction[]>(`/api/transactions`);
-      if (response.status === "success")
-        updateTransactionData({
-          ...transactionData,
-          currentYear: new Date().getFullYear(),
-          transactions: response.data,
-        });
-    })();
+    console.info(
+      "Transaction provider data is refreshed for the first time..."
+    );
+
+    refreshTransactionData(new Date().getFullYear());
   }, []);
 
   useEffect(() => {
-    console.info("Transaction Provider is refreshed...");
+    console.info("Transaction provider data is refreshed...");
   }, [transactionData]);
 
   const refreshTransactionData = async (year: number) => {
-    //todo: Make API call using year
-    // const data = await api.get(`/api/transactions`);
-    // console.log("GET /api/transactions", year, data);
-    updateTransactionData(INITIAL_DATA.transactionData);
+    const response = await api.get<ITransaction[]>(`/api/transactions`);
+    if (response.status === "success")
+      setTransactionData({
+        ...transactionData,
+        currentYear: year,
+        transactions: response.data,
+      });
+  };
+
+  const addTransaction = async (transaction: ITransaction) => {
+    // todo: Make API call to add transaction
+    // Get transaction id back and then add that id
+    if (transactionData.transactions === null) return;
+
+    const updatedTransactions = [...transactionData.transactions];
+    updatedTransactions.push(transaction);
+    setTransactionData({
+      ...transactionData,
+      transactions: updatedTransactions,
+    });
   };
 
   return (
     <TransactionContext.Provider
-      value={{ transactionData, refreshTransactionData }}
+      value={{ transactionData, addTransaction, refreshTransactionData }}
     >
       {children}
     </TransactionContext.Provider>

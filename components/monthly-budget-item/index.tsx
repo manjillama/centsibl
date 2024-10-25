@@ -25,15 +25,16 @@ export default function MonthlyBudgetItem({
           </div>
         </label>
         <select
+          value={transaction.category}
           name="category"
-          defaultValue={transaction.category}
+          onChange={transaction as any}
           style={{
             color:
               transaction.category === CategoryType.Income
                 ? "#16a34a"
                 : "white",
           }}
-          className="w-48"
+          className="w-48 h-full ml-1"
         >
           {Object.values(CategoryType).map((category) => (
             <option key={category} value={category}>

@@ -4,21 +4,23 @@ import ITransaction from "@/interfaces/ITransaction";
 import { useMemo } from "react";
 import MonthlyBudget from "../monthly-budget";
 import YearlyChart from "../yearly-chart";
-import BUdgetInputForm from "../budget-input-form";
+import BudgetInputForm from "../budget-input-form";
 
 export default function BudgetContainer() {
-  const { transactionData } = useTransaction();
+  const { transactionData, addTransaction } = useTransaction();
 
   const allMonthlyTransaction = useMemo(() => {
     const updatedMonthlyTransaction: ITransaction[][] = Array.from(
       { length: 12 },
       () => []
     );
-    if (transactionData.transactions)
+
+    if (transactionData.transactions) {
       transactionData.transactions.forEach((transaction) => {
         const monthIndex = new Date(transaction.transactionDate).getUTCMonth();
         updatedMonthlyTransaction[monthIndex].push(transaction);
       });
+    }
 
     return updatedMonthlyTransaction;
   }, [transactionData.transactions]);
@@ -51,7 +53,10 @@ export default function BudgetContainer() {
 
   return (
     <div className="text-sm">
-      <BUdgetInputForm currency={transactionData.currency} />
+      <BudgetInputForm
+        currency={transactionData.currency}
+        addTransaction={addTransaction}
+      />
       {renderMonthlyBudget()}
       <br />
       <YearlyChart

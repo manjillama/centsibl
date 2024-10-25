@@ -1,5 +1,4 @@
 "use client";
-import { useTransaction } from "@/context/transaction-provider";
 import ITransaction from "@/interfaces/ITransaction";
 import { formatCurrency, transformIndexToMonth } from "@/utils";
 import { useMemo } from "react";

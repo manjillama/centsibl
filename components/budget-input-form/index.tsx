@@ -1,4 +1,5 @@
 "use client";
+import ITransaction from "@/interfaces/ITransaction";
 import { CategoryType } from "@/types";
 import {
   categoryToEmoji,
@@ -8,8 +9,14 @@ import {
 } from "@/utils";
 import { useState } from "react";
 
-export default function BUdgetInputForm({ currency }: { currency: string }) {
-  const [formProps, setFormProps] = useState({
+export default function BudgetInputForm({
+  currency,
+  addTransaction,
+}: {
+  currency: string;
+  addTransaction: (transaction: ITransaction) => void;
+}) {
+  const [formProps, setFormProps] = useState<ITransaction>({
     title: "",
     category: CategoryType.Food,
     amount: "",
@@ -20,13 +27,24 @@ export default function BUdgetInputForm({ currency }: { currency: string }) {
     const { name, value } = event.currentTarget;
     setFormProps({
       ...formProps,
-      [name]: value,
+      [name]:
+        name === "amount" ? (value === "" ? "" : parseFloat(value)) : value,
     });
+  }
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    console.log("Form props", formProps);
+
+    addTransaction(formProps);
   }
 
   return (
     <div className="border-b-[1px] border-neutral-700 py-4">
-      <div className="flex flex-wrap rounded-md -mx-2 space-x-2 py-1 lg:w-4/5">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-wrap rounded-md -mx-2 space-x-2 py-1 lg:w-4/5"
+      >
         <div className="ml-2 grow md:w-auto w-full flex items-center">
           {categoryToEmoji(CategoryType.Food)}
           <input
@@ -91,13 +109,13 @@ export default function BUdgetInputForm({ currency }: { currency: string }) {
         </div>
         <div className="md:w-auto md:mt-0 w-full mt-2">
           <button
-            type="button"
+            type="submit"
             className="py-2 px-6 block bg-sky-600 text-white rounded-lg hover:opacity-75 text-sm"
           >
             Add
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

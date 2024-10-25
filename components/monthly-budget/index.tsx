@@ -1,5 +1,5 @@
 import ITransaction from "@/interfaces/ITransaction";
-import { formatCurrency, transformIndexToMonth } from "@/utils";
+import { formatCurrency, getValidNumber, transformIndexToMonth } from "@/utils";
 import MonthlyBudgetItem from "../monthly-budget-item";
 import MonthlyChart from "../monthly-chart";
 import { useMemo } from "react";
@@ -30,16 +30,28 @@ export default function MonthlyBudget({
     return dataMap;
   }, [transactions]);
 
+  // Memoizing series and labels based on transactions
+  const [series, labels] = useMemo(() => {
+    return [
+      Array.from(monthlyChartData.values()),
+      Array.from(monthlyChartData.keys()),
+    ];
+  }, [monthlyChartData]);
+
   if (transactions.length <= 0) return null;
 
   function getTotalExpense() {
     return transactions.reduce((a, b) => {
-      return b.category !== CategoryType.Income ? a + b.amount : a;
+      return b.category !== CategoryType.Income
+        ? a + getValidNumber(b.amount)
+        : a;
     }, 0);
   }
   function getTotalIncome() {
     return transactions.reduce((a, b) => {
-      return b.category === CategoryType.Income ? a + b.amount : a;
+      return b.category === CategoryType.Income
+        ? a + getValidNumber(b.amount)
+        : a;
     }, 0);
   }
 
@@ -63,7 +75,7 @@ export default function MonthlyBudget({
       </div>
       <div className="flex flex-wrap">
         <div className="lg:w-3/5 w-full lg:mb-0 mb-4">
-          {transactions
+          {/* {transactions
             .sort(
               (a, b) =>
                 (new Date(a.transactionDate) as any) -
@@ -75,13 +87,10 @@ export default function MonthlyBudget({
                 currency={currency}
                 key={i}
               />
-            ))}
+            ))} */}
         </div>
         <div className="lg:w-2/5">
-          <MonthlyChart
-            series={Array.from(monthlyChartData.values())}
-            labels={Array.from(monthlyChartData.keys())}
-          />
+          <MonthlyChart series={series} labels={labels} />
         </div>
       </div>
     </div>

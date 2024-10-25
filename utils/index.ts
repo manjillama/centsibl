@@ -28,12 +28,13 @@ export function getNormalizedDate(date: Date) {
   const day = String(date.getDate()).padStart(2, "0"); // Ensure two-digit format
   return `${year}-${month}-${day}`;
 }
-
 export function formatCurrency(currency: string) {
   if (currency === "USD") return "$";
   return currency;
 }
-
+export function getValidNumber(amount: number | ""): number {
+  return typeof amount === "number" ? amount : 0;
+}
 export function categoryToEmoji(category: CategoryType) {
   switch (category) {
     case CategoryType.BillsAndSubscriptions:

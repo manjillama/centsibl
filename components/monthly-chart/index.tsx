@@ -1,4 +1,5 @@
-import { useState } from "react";
+"use client";
+import { useEffect, useMemo, useRef, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
 export default function MonthlyChart({
