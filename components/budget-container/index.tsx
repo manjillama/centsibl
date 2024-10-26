@@ -28,7 +28,6 @@ export default function BudgetContainer() {
   function renderMonthlyBudget() {
     const monthlyBudgets = [];
 
-    // Corrected loop condition: change `i <= 0` to `i >= 0`
     for (let i = allMonthlyTransaction.length - 1; i >= 0; i--) {
       monthlyBudgets.push(
         <MonthlyBudget

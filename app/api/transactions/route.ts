@@ -342,6 +342,30 @@ const DATA: ITransaction[] = [
     transactionDate: "2024-10-20",
   },
   {
+    title: "Passport charge",
+    category: CategoryType.Miscellaneous,
+    amount: 153,
+    transactionDate: "2024-10-24",
+  },
+  {
+    title: "Lasha lunch city",
+    category: CategoryType.Food,
+    amount: 96,
+    transactionDate: "2024-10-24",
+  },
+  {
+    title: "MTA",
+    category: CategoryType.Transportation,
+    amount: 20,
+    transactionDate: "2024-10-24",
+  },
+  {
+    title: "Grand central coffee",
+    category: CategoryType.Food,
+    amount: 13,
+    transactionDate: "2024-10-24",
+  },
+  {
     title: "Halal Bros Grill",
     category: CategoryType.Food,
     amount: 60,

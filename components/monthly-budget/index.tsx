@@ -75,7 +75,7 @@ export default function MonthlyBudget({
       </div>
       <div className="flex flex-wrap">
         <div className="lg:w-3/5 w-full lg:mb-0 mb-4">
-          {/* {transactions
+          {transactions
             .sort(
               (a, b) =>
                 (new Date(a.transactionDate) as any) -
@@ -87,10 +87,13 @@ export default function MonthlyBudget({
                 currency={currency}
                 key={i}
               />
-            ))} */}
+            ))}
         </div>
-        <div className="lg:w-2/5">
-          <MonthlyChart series={series} labels={labels} />
+        <div className="lg:w-2/5 w-full">
+          <MonthlyChart
+            series={JSON.stringify(series)}
+            labels={JSON.stringify(labels)}
+          />
         </div>
       </div>
     </div>

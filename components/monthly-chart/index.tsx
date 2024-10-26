@@ -1,56 +1,60 @@
 "use client";
-import { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useState, memo, useMemo } from "react";
 import ReactApexChart from "react-apexcharts";
 
-export default function MonthlyChart({
-  series,
-  labels,
-}: {
-  series: number[];
-  labels: string[];
-}) {
-  return (
-    <ReactApexChart
-      options={{
-        legend: {
-          labels: {
-            colors: "rgba(225, 225, 225, 0.443)",
-          },
+// eslint-disable-next-line react/display-name
+const MonthlyChart = memo(
+  ({ series, labels }: { series: string; labels: string }) => {
+    const [chartOptions, setChartOptions] = useState<ApexCharts.ApexOptions>({
+      legend: {
+        labels: {
+          colors: "rgba(225, 225, 225, 0.443)",
         },
-        chart: {
-          type: "donut",
-        },
-        stroke: {
-          width: 0,
-        },
-        labels,
-        responsive: [
-          {
-            breakpoint: 1024,
-            options: {
-              chart: {
-                width: 500,
-              },
-              legend: {
-                position: "bottom",
-              },
-            },
-          },
-          {
-            breakpoint: 560,
-            options: {
-              chart: {
-                width: 350,
-              },
-              legend: {
-                position: "bottom",
-              },
-            },
-          },
-        ],
-      }}
-      series={series}
-      type="donut"
-    />
-  );
-}
+        position: "right",
+      },
+      stroke: {
+        width: 0,
+      },
+      labels: JSON.parse(labels),
+      chart: {
+        type: "donut",
+      },
+    });
+
+    const updateChartOptions = () => {
+      const width = window.innerWidth;
+      if (width <= 1024) {
+        setChartOptions((prevOptions) => ({
+          ...prevOptions,
+
+          legend: { ...prevOptions.legend, position: "bottom" },
+        }));
+      } else {
+        setChartOptions((prevOptions) => ({
+          ...prevOptions,
+
+          legend: { ...prevOptions.legend, position: "right" },
+        }));
+      }
+    };
+
+    useEffect(() => {
+      updateChartOptions();
+      window.addEventListener("resize", updateChartOptions);
+
+      return () => {
+        window.removeEventListener("resize", updateChartOptions);
+      };
+    }, []);
+
+    return (
+      <ReactApexChart
+        options={chartOptions}
+        series={JSON.parse(series)}
+        type="donut"
+      />
+    );
+  }
+);
+
+export default MonthlyChart;

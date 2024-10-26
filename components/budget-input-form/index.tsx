@@ -9,6 +9,13 @@ import {
 } from "@/utils";
 import { useState } from "react";
 
+const INITIAL_FORM_PROPS = {
+  title: "",
+  category: "" as "",
+  amount: "" as "",
+  transactionDate: getNormalizedDate(new Date()),
+};
+
 export default function BudgetInputForm({
   currency,
   addTransaction,
@@ -16,12 +23,7 @@ export default function BudgetInputForm({
   currency: string;
   addTransaction: (transaction: ITransaction) => void;
 }) {
-  const [formProps, setFormProps] = useState<ITransaction>({
-    title: "",
-    category: CategoryType.Food,
-    amount: "",
-    transactionDate: getNormalizedDate(new Date()),
-  });
+  const [formProps, setFormProps] = useState<ITransaction>(INITIAL_FORM_PROPS);
 
   function handleChange(event: React.FormEvent<HTMLInputElement>) {
     const { name, value } = event.currentTarget;
@@ -37,6 +39,7 @@ export default function BudgetInputForm({
     console.log("Form props", formProps);
 
     addTransaction(formProps);
+    setFormProps(INITIAL_FORM_PROPS);
   }
 
   return (
@@ -56,6 +59,7 @@ export default function BudgetInputForm({
             autoCapitalize="true"
             autoComplete="off"
             placeholder="Type new budget name..."
+            required
           />
         </div>
         <label className="flex items-center">
@@ -71,6 +75,7 @@ export default function BudgetInputForm({
               className="w-48"
               autoComplete="off"
               placeholder="Add amount..."
+              required
             />
           </div>
         </label>
@@ -81,12 +86,18 @@ export default function BudgetInputForm({
             onChange={handleChange as any}
             style={{
               color:
-                formProps.category === CategoryType.Income
+                formProps.category === ""
+                  ? "#a1a1aa"
+                  : formProps.category === CategoryType.Income
                   ? "#16a34a"
                   : "white",
             }}
             className="w-48 h-full ml-1"
+            required
           >
+            <option value={""} className="text-neutral-500">
+              Select category...
+            </option>
             {Object.values(CategoryType).map((category) => (
               <option key={category} value={category}>
                 {category}
@@ -95,8 +106,8 @@ export default function BudgetInputForm({
           </select>
         </div>
         <div className="relative w-32 input">
-          <label className="date-picker-label text-white ml-[4px]">
-            {formatDate(new Date(formProps.transactionDate))}
+          <label className="date-picker-label text-white ml-[4px] h-[30px] flex items-center">
+            <span>{formatDate(new Date(formProps.transactionDate))}</span>
             <input
               className="picker"
               type="date"
