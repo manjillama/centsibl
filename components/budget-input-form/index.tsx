@@ -42,7 +42,7 @@ export default function BudgetInputForm({
     e.preventDefault();
     console.log("Form props", formProps);
 
-    addTransaction(formProps);
+    addTransaction({ ...formProps, amount: Number(formProps.amount) });
     setFormProps(INITIAL_FORM_PROPS);
   }
 

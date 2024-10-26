@@ -46,12 +46,15 @@ export default function BudgetContainer() {
   if (!transactionData.transactions)
     return (
       <p className="text-white text-center mt-24 mb-12">
-        Please wait while we&apos;re warming up your budget...
+        Please wait while we&apos;re working up your budget...
       </p>
     );
 
   return (
     <div className="text-sm">
+      <h1 className="text-xl font-bold text-white mb-4">
+        {transactionData.currentYear}
+      </h1>
       <BudgetInputForm
         currency={transactionData.currency}
         addTransaction={addTransaction}

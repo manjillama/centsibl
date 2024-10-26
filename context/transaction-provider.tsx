@@ -29,16 +29,8 @@ function TransactionProvider({ children }: { children: React.ReactNode }) {
   );
 
   useEffect(() => {
-    console.info(
-      "Transaction provider data is refreshed for the first time..."
-    );
-
     refreshTransactionData(new Date().getFullYear());
   }, []);
-
-  useEffect(() => {
-    console.info("Transaction provider data is refreshed...");
-  }, [transactionData]);
 
   const refreshTransactionData = async (year: number) => {
     const response = await api.get<ITransaction[]>(`/api/transactions`);
