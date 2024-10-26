@@ -12,7 +12,7 @@ export default async function DashboardPage() {
   return (
     <div className="container mx-auto px-[15px] py-4">
       <h1 className="text-2xl font-bold text-white mb-4">
-        👋 {getGreeting()} {session?.user?.name?.split(" ")[0]}.
+        👋 {getGreeting()}, {session?.user?.name?.split(" ")[0]}.
       </h1>
       <BudgetContainer />
     </div>

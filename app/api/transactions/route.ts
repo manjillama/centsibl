@@ -428,6 +428,171 @@ const DATA: ITransaction[] = [
   },
 ];
 
+// const DATA = [
+//   {
+//     title: "Costco Groceries",
+//     category: CategoryType.Food,
+//     amount: 160,
+//     transactionDate: "2024-10-10",
+//   },
+//   {
+//     title: "Takeo",
+//     category: CategoryType.DebtRepayment,
+//     amount: 1500,
+//     transactionDate: "2024-10-22",
+//   },
+//   {
+//     title: "Marina's Expense",
+//     category: CategoryType.FamilyAndChildren,
+//     amount: 500,
+//     transactionDate: "2024-10-01",
+//   },
+//   {
+//     title: "Savings",
+//     category: CategoryType.SavingsAndInvestments,
+//     amount: 2000,
+//     transactionDate: "2024-10-01",
+//   },
+//   {
+//     title: "City + JH Train",
+//     category: CategoryType.Transportation,
+//     amount: 22,
+//     transactionDate: "2024-10-03",
+//   },
+//   {
+//     title: "Phayul + Ice Cream",
+//     category: CategoryType.Food,
+//     amount: 67,
+//     transactionDate: "2024-10-03",
+//   },
+//   {
+//     title: "Family Gateway Poconos",
+//     category: CategoryType.Travel,
+//     amount: 555,
+//     transactionDate: "2024-10-04",
+//   },
+//   {
+//     title: "Hoka Shoes",
+//     category: CategoryType.ClothingAndAccessories,
+//     amount: 158,
+//     transactionDate: "2024-10-04",
+//   },
+//   {
+//     title: "Cellular Repayment",
+//     category: CategoryType.DebtRepayment,
+//     amount: 524,
+//     transactionDate: "2024-10-11",
+//   },
+//   {
+//     title: "MTA to JH",
+//     category: CategoryType.Transportation,
+//     amount: 11,
+//     transactionDate: "2024-10-11",
+//   },
+//   {
+//     title: "Phayul",
+//     category: CategoryType.Transportation,
+//     amount: 59,
+//     transactionDate: "2024-10-11",
+//   },
+//   {
+//     title: "ChatGPT",
+//     category: CategoryType.BillsAndSubscriptions,
+//     amount: 22,
+//     transactionDate: "2024-10-09",
+//   },
+//   {
+//     title: "Marina MTA, Uber, Coffee",
+//     category: CategoryType.Food,
+//     amount: 49,
+//     transactionDate: "2024-10-14",
+//   },
+//   {
+//     title: "Uniqlo",
+//     category: CategoryType.ClothingAndAccessories,
+//     amount: 500,
+//     transactionDate: "2024-10-14",
+//   },
+//   {
+//     title: "Salary",
+//     category: CategoryType.Income,
+//     amount: 3885,
+//     transactionDate: "2024-10-15",
+//   },
+//   {
+//     title: "Costco Groceries 2",
+//     category: CategoryType.ClothingAndAccessories,
+//     amount: 104,
+//     transactionDate: "2024-10-16",
+//   },
+//   {
+//     title: "Ludo Loss",
+//     category: CategoryType.Entertainment,
+//     amount: 70,
+//     transactionDate: "2024-10-20",
+//   },
+//   {
+//     title: "Kyuramen",
+//     category: CategoryType.Food,
+//     amount: 160,
+//     transactionDate: "2024-10-19",
+//   },
+//   {
+//     title: "Spot Dessert Bar",
+//     category: CategoryType.Food,
+//     amount: 56,
+//     transactionDate: "2024-10-19",
+//   },
+//   {
+//     title: "Target",
+//     category: CategoryType.Miscellaneous,
+//     amount: 11,
+//     transactionDate: "2024-10-19",
+//   },
+//   {
+//     title: "MTA to City",
+//     category: CategoryType.Transportation,
+//     amount: 20,
+//     transactionDate: "2024-10-20",
+//   },
+//   {
+//     title: "Passport charge",
+//     category: CategoryType.Miscellaneous,
+//     amount: 153,
+//     transactionDate: "2024-10-24",
+//   },
+//   {
+//     title: "Lasha lunch city",
+//     category: CategoryType.Food,
+//     amount: 96,
+//     transactionDate: "2024-10-24",
+//   },
+//   {
+//     title: "MTA",
+//     category: CategoryType.Transportation,
+//     amount: 20,
+//     transactionDate: "2024-10-24",
+//   },
+//   {
+//     title: "Grand central coffee",
+//     category: CategoryType.Food,
+//     amount: 13,
+//     transactionDate: "2024-10-24",
+//   },
+//   {
+//     title: "Halal Bros Grill",
+//     category: CategoryType.Food,
+//     amount: 60,
+//     transactionDate: "2024-10-21",
+//   },
+//   {
+//     title: "Salary",
+//     category: CategoryType.Income,
+//     amount: 3885,
+//     transactionDate: "2024-10-31",
+//   },
+// ];
+
 export const GET = catchAsync(async function (req: Request) {
   // await dbConnect();
 
