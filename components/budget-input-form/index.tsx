@@ -27,13 +27,17 @@ export default function BudgetInputForm({
 
   function handleChange(event: React.FormEvent<HTMLInputElement>) {
     const { name, value } = event.currentTarget;
+
     setFormProps({
       ...formProps,
-      [name]:
-        name === "amount" ? (value === "" ? "" : parseFloat(value)) : value,
+      [name]: name === "amount" ? getValidUserAmount(value) : value,
     });
   }
 
+  function getValidUserAmount(amount: string) {
+    if (/^\d*\.?\d?$/.test(amount.toString())) return amount;
+    return formProps.amount;
+  }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     console.log("Form props", formProps);
