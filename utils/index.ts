@@ -35,7 +35,7 @@ export function formatCurrency(currency: string) {
 export function getValidNumber(amount: number | ""): number {
   return typeof amount === "number" ? amount : 0;
 }
-export function categoryToEmoji(category: CategoryType) {
+export function categoryToEmoji(category: CategoryType | string) {
   switch (category) {
     case CategoryType.BillsAndSubscriptions:
       return "🧾";
