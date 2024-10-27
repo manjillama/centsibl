@@ -41,10 +41,10 @@ export const options: NextAuthOptions = {
       }
       return session;
     },
-    async redirect({ url, baseUrl }) {
-      if (url.startsWith("/")) return `${baseUrl}${url}`;
-      return url;
-    },
+    // async redirect({ url, baseUrl }) {
+    //   if (url.startsWith("/")) return `${baseUrl}${url}`;
+    //   return url;
+    // },
   },
   providers: [
     GitHubProvider({
