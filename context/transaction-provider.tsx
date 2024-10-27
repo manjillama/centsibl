@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "@/utils/api";
-import ITransaction from "@/interfaces/ITransaction";
+import { ITransaction } from "@/interfaces/ITransaction";
 
 const INITIAL_DATA: {
   transactionData: {
@@ -11,6 +11,9 @@ const INITIAL_DATA: {
   };
   refreshTransactionData: (year: number) => void;
   addTransaction: (transaction: ITransaction) => void;
+  updateTransaction: (transaction: ITransaction) => void;
+  changeToPreviousYear: () => void;
+  changeToNextYear: () => void;
 } = {
   transactionData: {
     currentYear: new Date().getFullYear(),
@@ -19,6 +22,9 @@ const INITIAL_DATA: {
   },
   refreshTransactionData: () => {},
   addTransaction: () => {},
+  updateTransaction: () => {},
+  changeToPreviousYear: () => {},
+  changeToNextYear: () => {},
 };
 
 const TransactionContext = createContext(INITIAL_DATA);
@@ -33,7 +39,9 @@ function TransactionProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const refreshTransactionData = async (year: number) => {
-    const response = await api.get<ITransaction[]>(`/api/transactions`);
+    const response = await api.get<ITransaction[]>(
+      `/api/transactions?year=${transactionData.currentYear}`
+    );
     if (response.status === "success")
       setTransactionData({
         ...transactionData,
@@ -43,21 +51,71 @@ function TransactionProvider({ children }: { children: React.ReactNode }) {
   };
 
   const addTransaction = async (transaction: ITransaction) => {
-    // todo: Make API call to add transaction
-    // Get transaction id back and then add that id
     if (transactionData.transactions === null) return;
 
+    const response = await api.post<ITransaction>(
+      `/api/transactions`,
+      transaction
+    );
+
+    if (response.status !== "success") return;
+
     const updatedTransactions = [...transactionData.transactions];
-    updatedTransactions.push(transaction);
+    updatedTransactions.push(response.data);
     setTransactionData({
       ...transactionData,
       transactions: updatedTransactions,
     });
   };
 
+  const updateTransaction = async (transaction: ITransaction) => {
+    if (transactionData.transactions === null) return;
+
+    const response = await api.put<ITransaction>(
+      `/api/transactions/${transaction._id}`,
+      transaction
+    );
+
+    if (response.status !== "success") return;
+
+    const updatedTransactions = transactionData.transactions.map(
+      (localTransaction) => {
+        if (localTransaction._id === transaction._id)
+          return { ...localTransaction, ...transaction };
+        return localTransaction;
+      }
+    );
+
+    setTransactionData({
+      ...transactionData,
+      transactions: updatedTransactions,
+    });
+  };
+
+  const changeToPreviousYear = () => {
+    setTransactionData({
+      ...transactionData,
+      currentYear: transactionData.currentYear - 1,
+    });
+  };
+
+  const changeToNextYear = () => {
+    setTransactionData({
+      ...transactionData,
+      currentYear: transactionData.currentYear + 1,
+    });
+  };
+
   return (
     <TransactionContext.Provider
-      value={{ transactionData, addTransaction, refreshTransactionData }}
+      value={{
+        transactionData,
+        refreshTransactionData,
+        addTransaction,
+        updateTransaction,
+        changeToPreviousYear,
+        changeToNextYear,
+      }}
     >
       {children}
     </TransactionContext.Provider>

@@ -48,9 +48,41 @@ async function post<T>(
   }
 }
 
+async function put<T>(
+  url: string,
+  data: any
+): Promise<
+  | {
+      status: "success";
+      data: T;
+    }
+  | { status: "fail" | "error"; message: string; errors: string[] }
+> {
+  try {
+    const response = await fetch(url, {
+      method: "PUT",
+      headers: {
+        Accept: "application.json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      cache: "default",
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return {
+      status: "error",
+      message: "Uh oh! Something went wrong",
+      errors: ["Uh oh! Something went wrong"],
+    };
+  }
+}
+
 const api = {
   get,
   post,
+  put,
 };
 
 export default api;

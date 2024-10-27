@@ -1,4 +1,4 @@
-import ITransaction from "@/interfaces/ITransaction";
+import { ITransaction } from "@/interfaces/ITransaction";
 import { formatCurrency, getValidNumber, transformIndexToMonth } from "@/utils";
 import MonthlyBudgetItem from "../monthly-budget-item";
 import MonthlyChart from "../monthly-chart";

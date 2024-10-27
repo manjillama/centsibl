@@ -1,8 +1,18 @@
+import mongoose, { ObjectId } from "mongoose";
 import { CategoryType } from "@/types";
 
-export default interface ITransaction {
-  transactionDate: string;
+export interface ITransaction {
+  _id: string;
+  transactionDate: Date | string;
   title: string;
   category: CategoryType | "";
   amount: number | "";
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+}
+
+export interface ITransactionDocument
+  extends mongoose.Document,
+    Omit<ITransaction, "_id"> {
+  user: string | ObjectId;
 }

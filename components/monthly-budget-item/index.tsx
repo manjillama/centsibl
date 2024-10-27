@@ -1,4 +1,5 @@
-import ITransaction from "@/interfaces/ITransaction";
+import { useTransaction } from "@/context/transaction-provider";
+import { ITransaction } from "@/interfaces/ITransaction";
 import { CategoryType } from "@/types";
 import { categoryToEmoji, formatCurrency, formatDate } from "@/utils";
 import { useState } from "react";
@@ -10,6 +11,7 @@ export default function MonthlyBudgetItem({
   transaction: ITransaction;
   currency: string;
 }) {
+  const { updateTransaction } = useTransaction();
   const [formProps, setFormProps] = useState<ITransaction>(transaction);
 
   function handleChange(event: React.FormEvent<HTMLInputElement>) {
@@ -27,16 +29,13 @@ export default function MonthlyBudgetItem({
   }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("Form props", formProps);
-
-    // addTransaction({ ...formProps, amount: Number(formProps.amount) });
-    // setFormProps(INITIAL_FORM_PROPS);
+    updateTransaction(formProps);
   }
 
   return (
     <div className="border-b-[1px] border-neutral-700">
       <form
-        onSubmit={handleSubmit}
+        onBlur={handleSubmit}
         className="flex flex-wrap hover:bg-neutral-700 rounded-md -mx-2 space-x-2 py-1"
       >
         <div className="ml-2 grow md:w-auto w-full flex items-center">
@@ -95,7 +94,7 @@ export default function MonthlyBudgetItem({
               type="date"
               name="transactionDate"
               onChange={handleChange}
-              value={formProps.transactionDate}
+              value={formProps.transactionDate as string}
               onClick={(e) => e.currentTarget.showPicker()}
             />
           </label>

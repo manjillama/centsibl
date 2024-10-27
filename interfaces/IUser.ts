@@ -6,28 +6,34 @@ export enum EProviders {
   google = "google",
 }
 export const AVATAR_BACKGROUND_COLORS = [
-  "#264653",
-  "#2a9d8f",
-  "#e9c46a",
-  "#f4a261",
-  "#e76f51",
+  "#fed0bb",
   "#8ecae6",
   "#219ebc",
-  "#023047",
   "#ffb703",
-  "#fb8500",
+  "#74c69d",
+  "#e9c46a",
+  "#f4a261",
+  "#c1121f",
+  "#cdb4db",
+  "#ffafcc",
+  "#06d6a0",
+  "#c77dff",
 ] as const;
 export type AvatarBackgroundColorType =
   (typeof AVATAR_BACKGROUND_COLORS)[number];
-export interface IUser extends mongoose.Document {
+export interface IUser {
+  _id: string;
   provider: EProviders;
   name: string;
   email: string;
   password: string;
   isEmailVerified: boolean;
+  image?: string;
   avatarBackgroundColor: AvatarBackgroundColorType;
   createdAt: Date;
   updatedAt: Date;
+}
+export interface IUserDocument extends mongoose.Document, Omit<IUser, "_id"> {
   validatePassword(
     candidatePassword: string,
     hashedPassword: string

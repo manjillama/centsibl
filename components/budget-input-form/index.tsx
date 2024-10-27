@@ -1,5 +1,5 @@
 "use client";
-import ITransaction from "@/interfaces/ITransaction";
+import { ITransaction } from "@/interfaces/ITransaction";
 import { CategoryType } from "@/types";
 import {
   categoryToEmoji,
@@ -10,6 +10,7 @@ import {
 import { useState } from "react";
 
 const INITIAL_FORM_PROPS = {
+  _id: `${new Date().getTime()}`,
   title: "",
   category: "" as "",
   amount: "" as "",
@@ -23,7 +24,13 @@ export default function BudgetInputForm({
   currency: string;
   addTransaction: (transaction: ITransaction) => void;
 }) {
-  const [formProps, setFormProps] = useState<ITransaction>(INITIAL_FORM_PROPS);
+  const [formProps, setFormProps] =
+    useState<
+      Pick<
+        ITransaction,
+        "_id" | "title" | "category" | "amount" | "transactionDate"
+      >
+    >(INITIAL_FORM_PROPS);
 
   function handleChange(event: React.FormEvent<HTMLInputElement>) {
     const { name, value } = event.currentTarget;
@@ -40,8 +47,6 @@ export default function BudgetInputForm({
   }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("Form props", formProps);
-
     addTransaction({ ...formProps, amount: Number(formProps.amount) });
     setFormProps(INITIAL_FORM_PROPS);
   }
@@ -117,7 +122,7 @@ export default function BudgetInputForm({
               type="date"
               name="transactionDate"
               onChange={handleChange}
-              value={formProps.transactionDate}
+              value={formProps.transactionDate as string}
               onClick={(e) => e.currentTarget.showPicker()}
             />
           </label>
