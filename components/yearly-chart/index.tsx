@@ -1,5 +1,5 @@
 "use client";
-import ITransaction from "@/interfaces/ITransaction";
+import { ITransaction } from "@/interfaces/ITransaction";
 import { formatCurrency, transformIndexToMonth } from "@/utils";
 import { useMemo } from "react";
 import ApexChart, { Props } from "react-apexcharts";
