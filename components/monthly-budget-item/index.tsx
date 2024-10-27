@@ -29,7 +29,7 @@ export default function MonthlyBudgetItem({
   }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    updateTransaction(formProps);
+    updateTransaction({ ...formProps, amount: Number(formProps.amount) });
   }
 
   return (

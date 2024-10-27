@@ -58,7 +58,7 @@ export default function BudgetInputForm({
         className="flex flex-wrap rounded-md -mx-2 space-x-2 py-1 lg:w-4/5"
       >
         <div className="ml-2 grow md:w-auto w-full flex items-center">
-          {categoryToEmoji(CategoryType.Food)}
+          {categoryToEmoji(formProps.category)}
           <input
             type="text"
             value={formProps.title}

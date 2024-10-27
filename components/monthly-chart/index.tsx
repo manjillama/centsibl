@@ -17,6 +17,7 @@ const MonthlyChart = memo(
         "#f472b6",
         "#014f86",
         "#14746f",
+        "#d58936",
       ],
       legend: {
         labels: {

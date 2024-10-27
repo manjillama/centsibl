@@ -7,7 +7,6 @@ import { getGreeting } from "@/utils";
 
 export default async function DashboardPage() {
   const session = await getServerSession(options);
-  console.log("From dashboard: (Server session)", session);
 
   return (
     <div className="container mx-auto px-[15px] py-4">

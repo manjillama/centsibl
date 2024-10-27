@@ -63,7 +63,14 @@ export default function BudgetContainer() {
         currency={transactionData.currency}
         addTransaction={addTransaction}
       />
-      {renderMonthlyBudget()}
+      {transactionData.transactions.length > 0 ? (
+        renderMonthlyBudget()
+      ) : (
+        <p className="text-md my-6 mt-12 text-center">
+          Looks like you don&apos;t have any expenses to track this year. Start
+          by adding an income or expense.
+        </p>
+      )}
       <br />
       <YearlyChart
         transactions={transactionData.transactions}

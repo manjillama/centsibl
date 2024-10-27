@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { getServerSession } from "next-auth";
 import { options } from "./api/auth/[...nextauth]/options";
 import { redirect } from "next/navigation";
@@ -8,12 +9,12 @@ export default async function HomePage() {
   const session = await getServerSession(options);
   if (session) redirect("/dashboard");
   return (
-    <main className="max-w-screen-lg mx-auto px-[15px] py-4 overflow-hidden">
+    <main className="max-w-screen-lg mx-auto px-[15px] py-4">
       <h1 className="text-3xl font-medium">
         Try centsible. The budget app that you always wanted.
       </h1>
       <p className="mt-3 mb-6">
-        Join and gain insights into you spendings, it&apos;s free.
+        Join and gain insights into you income and spendings, it&apos;s free.
       </p>
       <div className="mb-6">
         <Link
@@ -23,20 +24,25 @@ export default async function HomePage() {
           Get started
         </Link>
       </div>
-      <div className="relative mb-12">
+      <div className="relative pb-4 mb-12">
         <Image
           className="rounded-xl border border-neutral-200  shadow-md"
+          src="/images/banner-3.png"
+          alt="centsible banner 3"
+          width={900}
+          height={796}
+        />
+        <Image
+          className="rounded-xl border border-neutral-200 shadow-md absolute top-20 left-16"
           src="/images/banner-1.png"
           alt="centsible banner 1"
           width={900}
           height={796}
         />
-        <Image
-          className="rounded-xl border border-neutral-200 shadow-md absolute top-12 left-12"
-          src="/images/banner-1.png"
-          alt="centsible banner 1"
-          width={900}
-          height={796}
+        <img
+          className="shadow-md absolute sm:max-w-[210px] sm:-left-10 -left-4 -bottom-24 max-w-[120px]"
+          src="/images/banner-2.png"
+          alt="centsible banner 3"
         />
       </div>
     </main>

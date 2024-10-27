@@ -34,13 +34,9 @@ function TransactionProvider({ children }: { children: React.ReactNode }) {
     INITIAL_DATA.transactionData
   );
 
-  // useEffect(() => {
-  //   refreshTransactionData(new Date().getFullYear());
-  // }, []);
-
   const refreshTransactionData = async (year: number) => {
     const response = await api.get<ITransaction[]>(
-      `/api/transactions?year=${transactionData.currentYear}`
+      `/api/transactions?year=${year}`
     );
     if (response.status === "success")
       setTransactionData({
@@ -93,17 +89,21 @@ function TransactionProvider({ children }: { children: React.ReactNode }) {
   };
 
   const changeToPreviousYear = () => {
+    const prevYear = transactionData.currentYear - 1;
     setTransactionData({
       ...transactionData,
-      currentYear: transactionData.currentYear - 1,
+      currentYear: prevYear,
     });
+    refreshTransactionData(prevYear);
   };
 
   const changeToNextYear = () => {
+    const nextYear = transactionData.currentYear + 1;
     setTransactionData({
       ...transactionData,
-      currentYear: transactionData.currentYear + 1,
+      currentYear: nextYear,
     });
+    refreshTransactionData(nextYear);
   };
 
   return (
