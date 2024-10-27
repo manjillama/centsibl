@@ -31,7 +31,7 @@ export default async function RootLayout({
             <Navbar />
             <div className="py-10 max-w-screen-xl	mx-auto">{children}</div>
             <footer className="py-8 border-t-[1px] border-neutral-700">
-              <p className="text-neutral-600 text-sm text-center">
+              <div className="text-neutral-600 text-sm text-center">
                 centsible &copy; {new Date().getFullYear()}
                 <span className="text-sm">
                   , created by{" "}
@@ -53,7 +53,7 @@ export default async function RootLayout({
                     Buy me a coffee ☕️
                   </Link>
                 </div>
-              </p>
+              </div>
             </footer>
           </AuthProvider>
         </TransactionProvider>

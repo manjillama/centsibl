@@ -9,7 +9,7 @@ export default async function HomePage() {
   const session = await getServerSession(options);
   if (session) redirect("/dashboard");
   return (
-    <main className="max-w-screen-lg mx-auto px-[15px] py-4 overflow-x-hidden">
+    <main className="max-w-screen-lg mx-auto py-4">
       <h1 className="text-3xl font-medium">
         Try centsible. The budget app that you always wanted.
       </h1>
@@ -24,7 +24,7 @@ export default async function HomePage() {
           Get started
         </Link>
       </div>
-      <div className="relative pb-4 mb-12">
+      <div className="relative pb-32 overflow-hidden">
         <Image
           className="rounded-xl border border-neutral-200  shadow-md"
           src="/images/banner-3.png"
@@ -40,7 +40,7 @@ export default async function HomePage() {
           height={796}
         />
         <img
-          className="shadow-md absolute sm:max-w-[210px] sm:-left-10 -left-4 -bottom-24 max-w-[120px]"
+          className="shadow-md absolute sm:max-w-[210px]  left-4 -bottom-2 max-w-[120px]"
           src="/images/banner-2.png"
           alt="centsible banner 3"
         />

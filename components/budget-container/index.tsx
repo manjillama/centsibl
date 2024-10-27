@@ -13,6 +13,7 @@ export default function BudgetContainer() {
 
   useEffect(() => {
     refreshTransactionData(new Date().getFullYear());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const allMonthlyTransaction = useMemo(() => {
