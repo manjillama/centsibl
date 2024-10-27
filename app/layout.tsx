@@ -25,9 +25,7 @@ export default async function RootLayout({
       />
       <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
       <title>centsible. The budget app that you always wanted.</title>
-      <body
-        className={`${inter.className} bg-neutral-900  text-white overflow-x-hidden`}
-      >
+      <body className={`${inter.className} bg-neutral-900  text-white`}>
         <TransactionProvider>
           <AuthProvider session={session}>
             <Navbar />
