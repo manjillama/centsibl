@@ -1,14 +1,19 @@
 "use client";
 import { useTransaction } from "@/context/transaction-provider";
 import { ITransaction } from "@/interfaces/ITransaction";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import MonthlyBudget from "../monthly-budget";
 import YearlyChart from "../yearly-chart";
 import BudgetInputForm from "../budget-input-form";
 import ChangeYear from "../change-year";
 
 export default function BudgetContainer() {
-  const { transactionData, addTransaction } = useTransaction();
+  const { transactionData, refreshTransactionData, addTransaction } =
+    useTransaction();
+
+  useEffect(() => {
+    refreshTransactionData(new Date().getFullYear());
+  }, []);
 
   const allMonthlyTransaction = useMemo(() => {
     const updatedMonthlyTransaction: ITransaction[][] = Array.from(

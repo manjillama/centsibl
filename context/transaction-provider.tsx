@@ -34,9 +34,9 @@ function TransactionProvider({ children }: { children: React.ReactNode }) {
     INITIAL_DATA.transactionData
   );
 
-  useEffect(() => {
-    refreshTransactionData(new Date().getFullYear());
-  }, []);
+  // useEffect(() => {
+  //   refreshTransactionData(new Date().getFullYear());
+  // }, []);
 
   const refreshTransactionData = async (year: number) => {
     const response = await api.get<ITransaction[]>(
