@@ -67,7 +67,7 @@ export default function BudgetInputForm({
             className="grow"
             autoCapitalize="true"
             autoComplete="off"
-            placeholder="Type new budget name..."
+            placeholder="Type new expense or income..."
             required
           />
         </div>
