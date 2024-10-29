@@ -1,13 +1,24 @@
 import AuthProvider from "@/context/auth-provider";
-import "./globals.css";
 import { Inter } from "next/font/google";
 import { getServerSession } from "next-auth";
 import { options } from "./api/auth/[...nextauth]/options";
 import Navbar from "@/components/navbar";
 import { TransactionProvider } from "@/context/transaction-provider";
 import Link from "next/link";
+import { Metadata } from "next";
+import { SITE_DATA } from "@/constants";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL as string),
+  title: `${SITE_DATA.name} | The budget app that you always wanted.`,
+  description: SITE_DATA.description,
+  openGraph: {
+    images: `/images/banner-1.png`,
+  },
+};
 
 export default async function RootLayout({
   children,
@@ -24,7 +35,6 @@ export default async function RootLayout({
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
       <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-      <title>centsible. The budget app that you always wanted.</title>
       <body className={`${inter.className} bg-neutral-900  text-white`}>
         <TransactionProvider>
           <AuthProvider session={session}>
@@ -32,7 +42,7 @@ export default async function RootLayout({
             <div className="py-10 max-w-screen-xl	mx-auto">{children}</div>
             <footer className="py-8 border-t-[1px] border-neutral-700">
               <div className="text-neutral-600 text-sm text-center">
-                centsible &copy; {new Date().getFullYear()}
+                {SITE_DATA.title} &copy; {new Date().getFullYear()}
                 <span className="text-sm">
                   , created by{" "}
                   <Link

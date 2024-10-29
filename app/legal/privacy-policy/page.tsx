@@ -2,7 +2,7 @@ import { SITE_DATA } from "@/constants";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: `Privacy Policy | ${SITE_DATA.title}`,
+  title: `Privacy Policy | ${SITE_DATA.name}`,
 };
 
 function PrivacyPolicy() {

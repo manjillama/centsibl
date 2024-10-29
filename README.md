@@ -18,7 +18,7 @@
 ### 1. Clone the repository and install dependencies
 
 ```
-git clone https://github.com/manjillama/centsible.git
+git clone https://github.com/manjillama/centsibl.git
 npm install
 ```
 

@@ -2,7 +2,7 @@ import { SITE_DATA } from "@/constants";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: `Terms of Service | ${SITE_DATA.title}`,
+  title: `Terms of Service | ${SITE_DATA.name}`,
 };
 
 async function TermsOfService() {
