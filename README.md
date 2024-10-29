@@ -1,7 +1,7 @@
 <p align="center">
    <br/>
-   <h2 align="center">centsible.</h2>
-   <p align="center">Track your income and spendings. The budget app that you always wanted.</p>
+   <h2 align="center">centsibl.</h2>
+   <p align="center">Track and gain insights of your income and spendings. The budget app that you always wanted.</p>
 </p>
 
 <hr/>
@@ -42,12 +42,6 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
-
-### Or run the development server with Docker:
-
-```
-docker-compose up
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
