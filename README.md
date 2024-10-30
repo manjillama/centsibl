@@ -1,6 +1,6 @@
 <p align="center">
    <br/>
-   <h2 align="center">centsibl.</h2>
+   <h2 align="center">centsibly.</h2>
    <p align="center">Track and gain insights of your income and spendings. The budget app that you always wanted.</p>
 </p>
 
@@ -18,7 +18,7 @@
 ### 1. Clone the repository and install dependencies
 
 ```
-git clone https://github.com/manjillama/centsibl.git
+git clone https://github.com/manjillama/centsibly.git
 npm install
 ```
 

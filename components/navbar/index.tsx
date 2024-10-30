@@ -6,6 +6,7 @@ import SignoutButton from "./signout-button";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { NavLink } from "../ui";
 import Avatar from "../ui/avatar";
+import { SITE_DATA } from "@/constants";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ export default function Navbar() {
     <nav className="container py-3 mx-auto px-[15px] text-sm">
       <div className="flex justify-between items-center">
         <h1 className="font-bold text-xl">
-          <Link href="/">centsible.</Link>
+          <Link href="/">{SITE_DATA.title}.</Link>
         </h1>
         <ul className="flex space-x-2 items-center">
           {session ? (

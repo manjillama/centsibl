@@ -1,5 +1,5 @@
 export const SITE_DATA = {
-  name: "Centsibl",
-  title: "centsibl",
+  name: "Centsibly",
+  title: "centsibly",
   description: "Track and gain insights of your income and spendings.",
 };
