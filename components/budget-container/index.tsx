@@ -6,6 +6,7 @@ import MonthlyBudget from "../monthly-budget";
 import YearlyChart from "../yearly-chart";
 import BudgetInputForm from "../budget-input-form";
 import ChangeYear from "../change-year";
+import DownloadTransactionsCsv from "../download-transactions-csv";
 
 export default function BudgetContainer() {
   const { transactionData, refreshTransactionData, addTransaction } =
@@ -59,7 +60,13 @@ export default function BudgetContainer() {
 
   return (
     <div className="text-sm">
-      <ChangeYear />
+      <div className="flex justify-between">
+        <ChangeYear />
+        <DownloadTransactionsCsv
+          transactions={transactionData.transactions}
+          currentYear={transactionData.currentYear}
+        />
+      </div>
       <BudgetInputForm
         currency={transactionData.currency}
         addTransaction={addTransaction}

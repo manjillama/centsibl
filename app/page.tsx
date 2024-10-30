@@ -15,7 +15,7 @@ export default async function HomePage() {
         Try {SITE_DATA.title}. The budget app that you always wanted.
       </h1>
       <p className="mt-3 mb-6">
-        Join and gain insights into you income and spendings, it&apos;s free.
+        Join and gain insights into you income and spendings.
       </p>
       <div className="mb-6">
         <Link
