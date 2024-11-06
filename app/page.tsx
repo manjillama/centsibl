@@ -10,7 +10,7 @@ export default async function HomePage() {
   const session = await getServerSession(options);
   if (session) redirect("/dashboard");
   return (
-    <main className="max-w-screen-lg mx-auto px-[15px] py-4">
+    <main className="py-4">
       <h1 className="text-3xl font-medium">
         Try {SITE_DATA.title}. The budget app that you always wanted.
       </h1>

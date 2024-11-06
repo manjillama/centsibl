@@ -6,7 +6,7 @@ export default function Greeting() {
   const { data: session } = useSession();
 
   return (
-    <h1 className="text-2xl font-bold text-white mb-4">
+    <h1 className="text-2xl font-bold text-white mb-4 max-w-screen-xl	mx-auto px-4">
       👋 {getGreeting()}, {session?.user?.name?.split(" ")[0]}.
     </h1>
   );

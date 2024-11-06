@@ -39,7 +39,7 @@ export default async function RootLayout({
         <TransactionProvider>
           <AuthProvider session={session}>
             <Navbar />
-            <div className="py-10 max-w-screen-xl	mx-auto">{children}</div>
+            <div className="py-10">{children}</div>
             <footer className="py-8 border-t-[1px] border-neutral-700">
               <div className="text-neutral-600 text-sm text-center">
                 {SITE_DATA.title} &copy; {new Date().getFullYear()}

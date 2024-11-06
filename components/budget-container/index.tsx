@@ -60,30 +60,39 @@ export default function BudgetContainer() {
 
   return (
     <div className="text-sm">
-      <div className="flex justify-between">
+      <div className="flex justify-between max-w-screen-xl mx-auto px-4">
         <ChangeYear />
         <DownloadTransactionsCsv
           transactions={transactionData.transactions}
           currentYear={transactionData.currentYear}
         />
       </div>
-      <BudgetInputForm
-        currency={transactionData.currency}
-        addTransaction={addTransaction}
-      />
-      {transactionData.transactions.length > 0 ? (
-        renderMonthlyBudget()
-      ) : (
-        <p className="text-md my-6 mt-12 text-center">
-          Looks like you don&apos;t have any expenses to track this year. Start
-          by adding an income or expense.
-        </p>
-      )}
+
+      <div>
+        <div className="border-b-[1px] border-neutral-700 py-2 sticky top-0 bg-neutral-900 z-10">
+          <BudgetInputForm
+            currency={transactionData.currency}
+            addTransaction={addTransaction}
+          />
+        </div>
+        <div className="max-w-screen-xl	mx-auto">
+          {transactionData.transactions.length > 0 ? (
+            renderMonthlyBudget()
+          ) : (
+            <p className="text-md my-6 mt-12 text-center">
+              Looks like you don&apos;t have any expenses to track this year.
+              Start by adding an income or expense.
+            </p>
+          )}
+        </div>
+      </div>
       <br />
-      <YearlyChart
-        transactions={transactionData.transactions}
-        currency={transactionData.currency}
-      />
+      <div className="max-w-screen-xl	mx-auto">
+        <YearlyChart
+          transactions={transactionData.transactions}
+          currency={transactionData.currency}
+        />
+      </div>
     </div>
   );
 }

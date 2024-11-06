@@ -33,12 +33,12 @@ export default function MonthlyBudgetItem({
   }
 
   return (
-    <div className="border-b-[1px] border-neutral-700">
+    <div className="lg:border-0 border-b-[1px] border-neutral-700">
       <form
         onBlur={handleSubmit}
-        className="flex flex-wrap hover:bg-neutral-700 rounded-md -mx-2 space-x-2 py-1"
+        className="flex flex-wrap hover:bg-neutral-700 rounded-md space-x-4 py-1 pr-2"
       >
-        <div className="ml-2 grow md:w-auto w-full flex items-center">
+        <div className="ml-4 grow md:w-auto w-full flex items-center">
           {categoryToEmoji(formProps.category)}
           <input
             type="text"
@@ -86,8 +86,8 @@ export default function MonthlyBudgetItem({
             </option>
           ))}
         </select>
-        <div className="relative w-32 input">
-          <label className="date-picker-label text-white ml-[4px]">
+        <div className="relative w-36 input">
+          <label className="date-picker-label text-white ml-[12px]">
             {formatDate(new Date(formProps.transactionDate))}
             <input
               className="picker"

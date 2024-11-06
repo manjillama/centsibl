@@ -57,7 +57,7 @@ export default function MonthlyBudget({
 
   return (
     <div className="my-4 py-4 pb-6">
-      <div className="mb-2">
+      <div className="mb-2 px-4">
         <h3 className="text-white font-semibold">
           {transformIndexToMonth(monthIndex)} {year}
         </h3>
