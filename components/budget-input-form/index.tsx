@@ -52,7 +52,7 @@ export default function BudgetInputForm({
   }
 
   return (
-    <div className="max-w-screen-xl	mx-auto px-4">
+    <div className="max-w-screen-xl	mx-auto px-4 pb-1">
       <form
         onSubmit={handleSubmit}
         className="flex flex-wrap rounded-md space-x-4 py-1 pr-2 lg:w-4/5 -mx-4"
