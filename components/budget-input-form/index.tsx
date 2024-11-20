@@ -101,7 +101,7 @@ export default function BudgetInputForm({
                   ? "#16a34a"
                   : "white",
             }}
-            className="w-48 h-full ml-1"
+            className="w-48 h-full px-0 py-1"
             required
           >
             <option value={""} className="text-neutral-500">
@@ -114,8 +114,8 @@ export default function BudgetInputForm({
             ))}
           </select>
         </div>
-        <div className="relative input md:w-36 w-full">
-          <label className="date-picker-label text-white ml-[12px] h-[30px] flex items-center">
+        <div className="relative md:w-36 w-full">
+          <label className="date-picker-label text-white h-[32px] flex items-center">
             <span>{formatDate(new Date(formProps.transactionDate))}</span>
             <input
               className="picker"
@@ -129,7 +129,7 @@ export default function BudgetInputForm({
         </div>
         <button
           type="submit"
-          className="py-2 px-6 block bg-sky-600 text-white rounded-lg hover:opacity-75 text-sm"
+          className="py-2 px-6 block bg-sky-600 text-white rounded-lg hover:opacity-75 text-sm md:mt-0 mt-2"
         >
           Add
         </button>
