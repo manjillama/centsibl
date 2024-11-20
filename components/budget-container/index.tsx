@@ -69,7 +69,7 @@ export default function BudgetContainer() {
       </div>
 
       <div>
-        <div className="border-b-[1px] border-neutral-700 py-2 sticky top-0 bg-neutral-900 z-10">
+        <div className="border-b-[1px] border-neutral-700 sticky top-0 bg-neutral-900 z-10">
           <BudgetInputForm
             currency={transactionData.currency}
             addTransaction={addTransaction}

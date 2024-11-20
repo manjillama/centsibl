@@ -60,13 +60,9 @@ export default function MonthlyBudget({
   }
 
   return (
-    <div className="mx-4 py-4 border-b-[1px] border-neutral-700">
-      <div className="flex px-1">
-        <button
-          type="button"
-          className="hover:bg-neutral-800 w-[36px] rounded-md mr-1"
-          onClick={() => setIsOpen(!isOpen)}
-        >
+    <div className="mx-4 border-b-[1px] border-neutral-700">
+      <button className="flex py-2 w-full" onClick={() => setIsOpen(!isOpen)}>
+        <div className="mr-1">
           {!isOpen ? (
             <svg
               className="mx-auto"
@@ -90,9 +86,9 @@ export default function MonthlyBudget({
               <path d="M4 6H11L7.5 10.5L4 6Z" fill="currentColor"></path>
             </svg>
           )}
-        </button>
+        </div>
         <div>
-          <h3 className="text-white font-semibold">
+          <h3 className="text-white text-left font-semibold">
             {transformIndexToMonth(monthIndex)} {year}
           </h3>
           <p className="text-neutral-500">
@@ -107,9 +103,9 @@ export default function MonthlyBudget({
             </span>
           </p>
         </div>
-      </div>
+      </button>
       {isOpen && (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap mb-4">
           <div className="lg:w-3/5 w-full lg:mb-0 mb-4">
             {transactions
               .sort(

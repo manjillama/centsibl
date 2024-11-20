@@ -52,7 +52,7 @@ export default function BudgetInputForm({
   }
 
   return (
-    <div className="max-w-screen-xl	mx-auto px-4 pb-1">
+    <div className="max-w-screen-xl	mx-auto px-4 py-1">
       <form
         onSubmit={handleSubmit}
         className="flex flex-wrap rounded-md space-x-4 py-1 pr-2 lg:w-4/5 -mx-4"
@@ -114,7 +114,7 @@ export default function BudgetInputForm({
             ))}
           </select>
         </div>
-        <div className="relative w-36 input">
+        <div className="relative input md:w-36 w-full">
           <label className="date-picker-label text-white ml-[12px] h-[30px] flex items-center">
             <span>{formatDate(new Date(formProps.transactionDate))}</span>
             <input
@@ -127,14 +127,12 @@ export default function BudgetInputForm({
             />
           </label>
         </div>
-        <div className="md:w-auto md:mt-0 w-full mt-2">
-          <button
-            type="submit"
-            className="py-2 px-6 block bg-sky-600 text-white rounded-lg hover:opacity-75 text-sm"
-          >
-            Add
-          </button>
-        </div>
+        <button
+          type="submit"
+          className="py-2 px-6 block bg-sky-600 text-white rounded-lg hover:opacity-75 text-sm"
+        >
+          Add
+        </button>
       </form>
     </div>
   );
