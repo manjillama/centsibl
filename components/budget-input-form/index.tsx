@@ -52,12 +52,12 @@ export default function BudgetInputForm({
   }
 
   return (
-    <div className="border-b-[1px] border-neutral-700 py-4">
+    <div className="max-w-screen-xl	mx-auto px-4 pb-1">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-wrap rounded-md -mx-2 space-x-2 py-1 lg:w-4/5"
+        className="flex flex-wrap rounded-md space-x-4 py-1 pr-2 lg:w-4/5 -mx-4"
       >
-        <div className="ml-2 grow md:w-auto w-full flex items-center">
+        <div className="ml-4 grow md:w-auto w-full flex items-center">
           {categoryToEmoji(formProps.category)}
           <input
             type="text"
@@ -114,8 +114,8 @@ export default function BudgetInputForm({
             ))}
           </select>
         </div>
-        <div className="relative w-32 input">
-          <label className="date-picker-label text-white ml-[4px] h-[30px] flex items-center">
+        <div className="relative w-36 input">
+          <label className="date-picker-label text-white ml-[12px] h-[30px] flex items-center">
             <span>{formatDate(new Date(formProps.transactionDate))}</span>
             <input
               className="picker"
