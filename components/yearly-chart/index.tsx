@@ -18,9 +18,13 @@ export default function YearlyChart({
     transactions.forEach((transaction) => {
       const currMonth = new Date(transaction.transactionDate).getUTCMonth();
       if (transaction.category === "Income") {
-        monthlyTotalIncome[currMonth] += transaction.amount;
+        monthlyTotalIncome[currMonth] = +(
+          monthlyTotalIncome[currMonth] + transaction.amount
+        ).toFixed(2);
       } else {
-        monthlyTotalExpense[currMonth] += transaction.amount;
+        monthlyTotalExpense[currMonth] = +(
+          monthlyTotalExpense[currMonth] + transaction.amount
+        ).toFixed(2);
       }
     });
 

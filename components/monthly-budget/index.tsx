@@ -22,9 +22,11 @@ export default function MonthlyBudget({
       if (transaction.category !== CategoryType.Income)
         dataMap.set(
           transaction.category,
-          dataMap.get(transaction.category)
-            ? dataMap.get(transaction.category) + transaction.amount
-            : transaction.amount
+          +(
+            dataMap.get(transaction.category)
+              ? dataMap.get(transaction.category) + transaction.amount
+              : transaction.amount
+          ).toFixed(2)
         );
     });
     return dataMap;
@@ -41,18 +43,22 @@ export default function MonthlyBudget({
   if (transactions.length <= 0) return null;
 
   function getTotalExpense() {
-    return transactions.reduce((a, b) => {
-      return b.category !== CategoryType.Income
-        ? a + getValidNumber(b.amount)
-        : a;
-    }, 0);
+    return +transactions
+      .reduce((a, b) => {
+        return b.category !== CategoryType.Income
+          ? a + getValidNumber(b.amount)
+          : a;
+      }, 0)
+      .toFixed(2);
   }
   function getTotalIncome() {
-    return transactions.reduce((a, b) => {
-      return b.category === CategoryType.Income
-        ? a + getValidNumber(b.amount)
-        : a;
-    }, 0);
+    return +transactions
+      .reduce((a, b) => {
+        return b.category === CategoryType.Income
+          ? a + getValidNumber(b.amount)
+          : a;
+      }, 0)
+      .toFixed(2);
   }
 
   return (
